@@ -1,3 +1,4 @@
+
 import {v2 as cloudinary} from "cloudinary"
 import  fs from "fs"
 
@@ -6,6 +7,14 @@ import  fs from "fs"
         api_key: process.env.CLOUDINARY_API_KEY,
         api_secret: process.env.CLOUDINARY_API_SECRET
     });
+
+    cloudinary.uploader.upload('/src/image.png', function(error, result) {
+        if (error) {
+          console.log('Upload Error:', error);
+        } else {
+          console.log('Upload Result:', result);
+        }
+      });
     
 
     const uploadOnCloudinary = async (localFilePath) =>{
